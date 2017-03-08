@@ -5,14 +5,17 @@ from flask import request
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def main_app():
 	return render_template("index.html")
+
 
 @app.route("/post_request", methods=["POST"])
 def post_request():
 	return request.form["test1"]
 
+
 if __name__ == "__main__":
-	# app.run()
 	app.run(host="0.0.0.0", port=8000)
+	print "started"
