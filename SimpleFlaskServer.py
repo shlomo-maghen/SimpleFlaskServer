@@ -1,8 +1,4 @@
-from flask import Flask
-from flask import render_template
-from flask import request
-from flask import redirect
-# from scapy.all import *
+from flask import Flask, render_template, request, redirect, send_from_directory
 
 app = Flask(__name__)
 
@@ -14,7 +10,13 @@ def main_app():
 
 @app.route("/post_request", methods=["POST"])
 def post_request():
-	return request.form["test1"]
+
+	file_size = request.form["file_size"]
+	if file_size == 'small':
+		print 'small'
+		return send_from_directory('static', 'small.txt')
+
+	return request.data
 
 @app.route("/reroute")
 def reroute():
