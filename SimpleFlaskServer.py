@@ -13,8 +13,11 @@ def post_request():
 
 	file_size = request.form["file_size"]
 	if file_size == 'small':
-		print 'small'
 		return send_from_directory('static', 'small.txt')
+	elif file_size == 'medium':
+		return send_from_directory('static', 'medium.txt')
+	elif file_size == 'large':
+		return send_from_directory('static', 'large.txt')
 
 	return request.data
 
